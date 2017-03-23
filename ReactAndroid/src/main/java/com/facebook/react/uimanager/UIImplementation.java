@@ -139,6 +139,12 @@ public class UIImplementation {
       int newHeight,
       EventDispatcher eventDispatcher) {
     ReactShadowNode cssNode = mShadowNodeRegistry.getNode(nodeViewTag);
+    if (cssNode == null) {
+        FLog.w(
+          ReactConstants.TAG,
+          "Tried to update size of non-existent tag: " + nodeViewTag);
+        return;
+    }
     cssNode.setStyleWidth(newWidth);
     cssNode.setStyleHeight(newHeight);
 
